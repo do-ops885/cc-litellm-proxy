@@ -1,0 +1,55 @@
+litellm_settings:
+  drop_params: true
+  cache: True
+  cache_params:
+    type: local
+  enable_preview_features: True
+
+model_list:
+
+  - model_name: anthropic/claude-sonnet-*
+    litellm_params:
+      model: openai/Qwen/Qwen3-Coder-480B-A35B-Instruct 
+      api_key: "os.environ/WANDB_API_KEY"
+      api_base: https://api.inference.wandb.ai/v1
+      headers: 
+        OpenAI-Project: "os.environ/WANDB_PROJECT"
+      max_tokens: 65536
+      repetition_penalty: 1.05
+      temperature: 0.7
+      top_k: 20
+      top_p: 0.8
+    model_info:
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.0000015
+
+  - model_name: anthropic/claude-opus-*
+    litellm_params:
+      model: openai/Qwen/Qwen3-235B-A22B-Thinking-2507
+      api_key: "os.environ/WANDB_API_KEY"
+      api_base: https://api.inference.wandb.ai/v1
+      headers: 
+        OpenAI-Project: "os.environ/WANDB_PROJECT"
+      max_tokens: 65536
+      repetition_penalty: 1.05
+      temperature: 0.6
+      top_k: 40
+      top_p: 0.95
+    model_info:
+      input_cost_per_token: 0.0000001
+      output_cost_per_token: 0.0000001
+
+  - model_name: anthropic/claude-3-5-haiku-*
+    litellm_params:
+      model: openai/Qwen/Qwen3-235B-A22B-Instruct-2507
+      api_key: "os.environ/WANDB_API_KEY"
+      api_base: https://api.inference.wandb.ai/v1
+      max_tokens: 65536
+      repetition_penalty: 1.05
+      temperature: 0.7
+      top_k: 20
+      top_p: 0.8
+      headers: 
+        OpenAI-Project: "os.environ/WANDB_PROJECT"
+      input_cost_per_token: 0.0000001
+      output_cost_per_token: 0.0000001
